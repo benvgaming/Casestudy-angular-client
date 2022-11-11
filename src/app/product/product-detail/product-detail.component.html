@@ -99,6 +99,25 @@
                 </mat-form-field>
             </div>
         </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header class="my-primary-text">
+                <mat-panel-title>
+                    QRCode Information
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+
+            <div layout="row">
+                <mat-form-field flex>
+                    <input matInput placeholder="QRCode Text" type="text" required formControlName="qrcodetxt" autofocus>
+                </mat-form-field>
+            </div>
+
+            <div *ngIf="selectedProduct.qrcode">
+                QR CODE: <br/>
+                <img style="display:block;" [src]="'data:image/png;base64,' + selectedProduct.qrcode"/>
+            </div>            
+        </mat-expansion-panel>
     </mat-accordion>
     <div class="mat-pad-sm">
         <button mat-raised-button type="button" (click)="updateSelectedProduct()" [disabled]="!productForm.valid">

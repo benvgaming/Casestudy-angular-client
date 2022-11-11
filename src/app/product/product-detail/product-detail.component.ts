@@ -46,7 +46,7 @@ export class ProductDetailComponent implements OnInit {
   qoh: FormControl;
   qoo: FormControl;
   //qrcode: FormControl;
-  //qrcodetxt: FormControl;
+  qrcodetxt: FormControl;
 
   constructor(private builder: FormBuilder, private dialog: MatDialog) {
     this.vendorid = new FormControl('', Validators.compose([Validators.required]));
@@ -59,7 +59,7 @@ export class ProductDetailComponent implements OnInit {
     this.qoh = new FormControl('', Validators.compose([Validators.required, ValidateNumber]));
     this.qoo = new FormControl('', Validators.compose([Validators.required, ValidateNumber]));
     //this.qrcode = new FormControl('', Validators.compose([Validators.required]));
-    //this.qrcodetxt = new FormControl('', Validators.compose([Validators.required]));
+    this.qrcodetxt = new FormControl('', Validators.compose([Validators.required]));
     this.productForm = this.builder.group({
       vendorid: this.vendorid,
       id: this.id,
@@ -71,7 +71,7 @@ export class ProductDetailComponent implements OnInit {
       qoh: this.qoh,
       qoo: this.qoo,
       //qrcode: this.qrcode,
-      //qrcodetxt: this.qrcodetxt,
+      qrcodetxt: this.qrcodetxt,
     });
   } // constructor
   ngOnInit(): void {
@@ -87,7 +87,7 @@ export class ProductDetailComponent implements OnInit {
       qoh: this.selectedProduct.qoh,
       qoo: this.selectedProduct.qoo,
       //qrcode: this.selectedProduct.qrcode,
-      //qrcodetxt: this.selectedProduct.qrcodetxt,
+      qrcodetxt: this.selectedProduct.qrcodetxt,
     });
   } // ngOnInit
   updateSelectedProduct(): void {
@@ -101,7 +101,7 @@ export class ProductDetailComponent implements OnInit {
     this.selectedProduct.qoh = this.productForm.value.qoh;
     this.selectedProduct.qoo = this.productForm.value.qoo;
     //this.selectedProduct.qrcode = this.productForm.value.qrcode;
-    //this.selectedProduct.qrcodetxt = this.productForm.value.qrcodetxt;
+    this.selectedProduct.qrcodetxt = this.productForm.value.qrcodetxt;
     this.saved.emit(this.selectedProduct);
   } // updateSelectedProduct
   /**
